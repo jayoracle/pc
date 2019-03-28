@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springboot.mapper.GoodsPriceMapper">
+
+   <insert id="insertGoodsPriceBatch" parameterType="java.util.List">
+       insert into it_goods_price (
+        goods_id
+       ,retailer
+       ,brand_reference_price
+       ,brand_reference_price_ex_VAT
+       ,net_price
+       ,country
+       ,currency
+       ,discount
+       ) VALUES
+       <foreach collection="list" item="item" index="index" separator=",">
+         (
+            #{item.goodsId}
+            ,#{item.retailer}
+            ,#{item.brandReferencePrice}
+            ,#{item.brandReferencePriceExVAT}
+            ,#{item.netPrice}
+            ,#{item.country}
+            ,#{item.currency}
+            ,#{item.discount}
+         )
+      </foreach>
+   </insert>
+</mapper>

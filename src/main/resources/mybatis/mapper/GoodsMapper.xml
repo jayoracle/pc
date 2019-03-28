@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springboot.mapper.GoodsMapper">
+   <!--    public Employee getEmpById(Integer id);
+
+
+    <insert id="insertBrandBatch" parameterType="java.util.List">
+
+        insert into it_brand (id,name) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+              #{item.id},
+              #{item.name}
+            )
+        </foreach>
+    </insert>
+
+    -->
+
+   <insert id="insertGoodsBatch" parameterType="java.util.List">
+
+      insert into it_goods (
+      id,
+       brand_id
+      ,category_id
+      ,code
+      ,collection
+      ,create_date
+      ,gender_id
+      ,goods_name
+      ,in_stock
+      ,main_picture
+      ,model
+      ,modified_time
+      ,parent_category_id
+      ,season
+      ,supplier_id
+      ,variant
+      ) values
+      <foreach collection="list" item="item" index="index" separator=",">
+         (
+         #{item.id},
+          #{item.brandId}
+         ,#{item.categoryId}
+         ,#{item.code}
+         ,#{item.collection}
+         ,#{item.createDate}
+         ,#{item.genderId}
+         ,#{item.goodsName}
+         ,#{item.inStock}
+         ,#{item.mainPicture}
+         ,#{item.model}
+         ,#{item.modifiedTime}
+         ,#{item.parentCategoryId}
+         ,#{item.season}
+         ,#{item.supplierId}
+         ,#{item.variant}
+         )
+      </foreach>
+   </insert>
+</mapper>

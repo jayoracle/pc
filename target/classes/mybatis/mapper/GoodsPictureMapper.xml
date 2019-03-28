@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springboot.mapper.GoodsPictureMapper">
+
+   <insert id="insertGoodsPictureBatch" parameterType="java.util.List">
+    insert into it_goods_picture (
+       goods_id
+       ,no
+       ,picture_thumb_url
+       ,picture_url
+      ) VALUES
+      <foreach collection="list" item="item" index="index" separator=",">
+         (
+            #{item.goodsId}
+            ,#{item.no}
+            ,#{item.pictureThumbUrl}
+            ,#{item.pictureUrl}
+         )
+      </foreach>
+   </insert>
+</mapper>

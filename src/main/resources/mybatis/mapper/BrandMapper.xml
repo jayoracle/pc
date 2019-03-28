@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springboot.mapper.BrandMapper">
+   <!--    public Employee getEmpById(Integer id);
+
+    public void insertEmp(Employee employee);-->
+    <select id="getCategoryById" resultType="com.atguigu.springboot.bean.Brand">
+        SELECT * FROM it_category WHERE id=#{id}
+    </select>
+
+    <insert id="insertBrandBatch" parameterType="java.util.List">
+
+        insert into it_brand (id,name) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+              #{item.id},
+              #{item.name}
+            )
+        </foreach>
+    </insert>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.springboot.mapper.CategoryMapper">
+   <!--    public Employee getEmpById(Integer id);
+
+    public void insertEmp(Employee employee);-->
+    <select id="getCategoryById" resultType="com.atguigu.springboot.bean.Category">
+        SELECT * FROM it_category WHERE id=#{id}
+    </select>
+
+    <insert id="insertByBatch" parameterType="java.util.List">
+
+        insert into it_category (
+        category_id
+        ,name
+        ,parent_id
+        ,parent_name
+        ,gender_ID
+        ) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.categoryId},
+            #{item.name}
+            ,#{item.parentId}
+            ,#{item.parentName}
+            ,#{item.genderId}
+            )
+        </foreach>
+    </insert>
+</mapper>
